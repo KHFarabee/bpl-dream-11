@@ -1,4 +1,4 @@
-import { useState, type Dispatch, type SetStateAction } from "react";
+import type { Dispatch, SetStateAction } from "react";
 import { FaMapMarkerAlt, FaUser } from "react-icons/fa";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import { MdSportsCricket } from "react-icons/md";
@@ -20,12 +20,22 @@ const PlayerCard = ({
   selectedPlayers,
   setSelectedPlayers,
 }: IPlayerCardProps) => {
-  const [isSelected, setIsSelected] = useState(false);
-  console.log(coin, setCoin, "From PlayerCard");
+  const isSelected = selectedPlayers.some(
+    (p) => p.playerName === player.playerName,
+  );
+
   const handleSelectPlayer = () => {
+    if (isSelected) {
+      toast.info(`${player.playerName} is already selected!`, {
+        position: "top-right",
+        autoClose: 3000,
+        theme: "light",
+        transition: Bounce,
+      });
+      return;
+    }
     const newPrice = coin - player.price;
     if (newPrice >= 0) {
-      setIsSelected(true);
       setCoin(newPrice);
       toast.success(`${player.playerName} has been purchased!`, {
         position: "top-right",

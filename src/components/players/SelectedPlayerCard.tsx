@@ -26,11 +26,13 @@ const SelectedPlayerCard = ({
 
   return (
     <div>
-      Selected Players
       <div className="grid grid-cols-1 gap-7 mt-6 ">
         {selectedPlayers.map((player: Iplayer) => {
           return (
-            <div className="flex gap-2 justify-between items-center border-2 border-gray-200 rounded-3xl py-2 px-4">
+            <div
+              key={player.playerName}
+              className="flex gap-2 justify-between items-center border-2 border-gray-200 rounded-3xl py-2 px-4"
+            >
               <div className="flex gap-2">
                 <img src={player.playerImg} alt="" className="h-10 w-10" />
                 <div>
