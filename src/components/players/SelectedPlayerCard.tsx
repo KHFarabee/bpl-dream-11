@@ -32,11 +32,7 @@ const SelectedPlayerCard = ({
           return (
             <div className="flex gap-2 justify-between items-center border-2 border-gray-200 rounded-3xl py-2 px-4">
               <div className="flex gap-2">
-                <img
-                  src={player.playerImg}
-                  alt=""
-                  className="h-[40px] w-[40px]"
-                />
+                <img src={player.playerImg} alt="" className="h-10 w-10" />
                 <div>
                   <h2 className="font-bold text-2xl">{player.playerName}</h2>
                   <p>{player.playerType}</p>
